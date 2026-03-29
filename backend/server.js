@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection (we'll add real link later)
-mongoose.connect("mongodb://Nanditha:Nandu2020@ac-mbxnz5o-shard-00-00.ltyvv1z.mongodb.net:27017,ac-mbxnz5o-shard-00-01.ltyvv1z.mongodb.net:27017,ac-mbxnz5o-shard-00-02.ltyvv1z.mongodb.net:27017/?ssl=true&replicaSet=atlas-x7ap4t-shard-0&authSource=admin&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -60,6 +60,8 @@ app.get("/history", async (req, res) => {
 });
 
 // Start server
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
