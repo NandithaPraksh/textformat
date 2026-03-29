@@ -46,6 +46,15 @@ app.post("/format", async (req, res) => {
   res.json({ result });
 });
 
+app.get("/history", async (req, res) => {
+    try {
+      const data = await Text.find().sort({ _id: -1 });
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch history" });
+    }
+  });
+
 app.get("/", (req, res) => {
     res.send("API is working 🚀");
 
