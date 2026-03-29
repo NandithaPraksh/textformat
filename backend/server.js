@@ -10,9 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection (we'll add real link later)
-mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/test")
+mongoose.connect("mongodb://Nanditha:Nandu2020@ac-mbxnz5o-shard-00-00.ltyvv1z.mongodb.net:27017,ac-mbxnz5o-shard-00-01.ltyvv1z.mongodb.net:27017,ac-mbxnz5o-shard-00-02.ltyvv1z.mongodb.net:27017/?ssl=true&replicaSet=atlas-x7ap4t-shard-0&authSource=admin&appName=Cluster0")
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
+
 
 // Schema
 const textSchema = new mongoose.Schema({
