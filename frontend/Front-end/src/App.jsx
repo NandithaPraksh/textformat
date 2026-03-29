@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import Signup from "./Signup";
 
 function App() {
   const [text, setText] = useState("");
   const [type, setType] = useState("uppercase");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
+  const [page,setPage]=useState("signup");
 
   const handleSubmit = async () => {
     const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app/format", {
@@ -29,6 +31,7 @@ function App() {
   useEffect(() => {
     fetchHistory();
   }, []);
+  if(page === "signup")return<Signup/>;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-black text-white flex flex-col items-center p-6">
