@@ -7,7 +7,7 @@ function App() {
   const [history, setHistory] = useState([]);
 
   const handleSubmit = async () => {
-    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app", {
+    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app/format", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +21,7 @@ function App() {
   };
 
   const fetchHistory = async () => {
-    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app");
+    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app/history");
     const data = await res.json();
     setHistory(data);
   };
