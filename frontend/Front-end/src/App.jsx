@@ -6,10 +6,12 @@ function App() {
   const [type, setType] = useState("uppercase");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState([]);
-  const [page,setPage]=useState("signup");
+  const [page, setPage] = useState("signup");
+
+  const BASE_URL = "https://precious-tranquility-production-0b28.up.railway.app";
 
   const handleSubmit = async () => {
-    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app/format", {
+    const res = await fetch(`${BASE_URL}/format`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -23,7 +25,7 @@ function App() {
   };
 
   const fetchHistory = async () => {
-    const res = await fetch("https://precious-tranquility-production-0b28.up.railway.app/history");
+    const res = await fetch(`${BASE_URL}/history`);
     const data = await res.json();
     setHistory(data);
   };
@@ -31,7 +33,11 @@ function App() {
   useEffect(() => {
     fetchHistory();
   }, []);
-  if(page === "signup")return<Signup/>;
+
+  // 🌸 SHOW SIGNUP PAGE
+  if (page === "signup") {
+    return <Signup setPage={setPage} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-black text-white flex flex-col items-center p-6">
